@@ -15,23 +15,25 @@ public class sliderScript : MonoBehaviour
 //    }
     public void SetSliderValues(float remains, float value)
     {
-        var precent = remains / 100;
+        var baseAge = remains+value;
+       
+        var precent = baseAge/ 100;
         var valueToPercent = value / precent;
         if (valueToPercent >= 100)
         {
             filledArea.fillAmount = 1;
-            sliderText.text = $"{remains}/{remains}";
+            sliderText.text = $"{baseAge}/{baseAge}";
             return;
         }
 
         if (value <= 0)
         {
             sliderText.text =
-                sliderText.text = $"0/{remains}";
+                sliderText.text = $"0/{baseAge}";
             return;
         }
         // ReSharper disable once PossibleLossOfFraction
         filledArea.fillAmount = value / 100;
-        sliderText.text = $"{value}/{remains}";
+        sliderText.text = $"{value}/{baseAge}";
     }
 }
